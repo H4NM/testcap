@@ -1,4 +1,4 @@
-# testcap
+# testcap.py
 
 
 This tool may screenshot a predefined area and saving the screenshot as a .png file in a catalog on your users desktop.
