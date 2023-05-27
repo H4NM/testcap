@@ -5,7 +5,7 @@ This tool may screenshot a predefined area and saving the screenshot as a .png f
 This facilitates the process of taking an online test where you might to simultaneously want to record the questions
 in order to review your provided answers or questions at a later stage where the test may not be available.
 
-To use this tool, first start install the necessary libraries (pynput, mouseinfo, os, PIL (ImageGrab) and datetime)
+To use this tool, first start install the necessary libraries (![pynput](https://pypi.org/project/pynput/), ![mouseinfo](https://pypi.org/project/MouseInfo/), ![PIL](https://pypi.org/project/Pillow/) (ImageGrab) and the native libraries datetime and os)
 This tool uses pynput to get the key strokes of the usage of the 'printscreen', 'space' and 'esc' buttons.
 These keys are recorded to enable the calls to the related functions.
 mouseinfo is used to retrieve the X and Y positions of the area that will be printscreened.
@@ -17,15 +17,15 @@ When the libraries are installed, run the script, move your mouse in the top-lef
 The (X,Y) positions of your mouse will be printed to the terminal that spawned when the script ran (copy these positions, you'll use them later).
 Now, repeat the same thing but in the bottom-right corner of the area you want to screenshot later. See the illustration below.
 
-                    (100,150)
-                     X - - - - - - - - - - - - -
-                    |                           |
-                    |                           |
-                    |                           |
-                    |                           |
-                    |                           |
-                    |                           |
-                     - - - - - - - - - - - - - X (200,350)
+             (100,150)
+              X - - - - - - - - - - - - -
+              |                           |
+              |                           |
+              |                           |
+              |                           |
+              |                           |
+              |                           |
+              - - - - - - - - - - - - - X (200,350)
 
 When you have the two x and y positions, enter them respectively into the variables 'top_left_mouse_pos' and 'bottom_right_mouse_pos'.
 Exit the script, either by pressing 'esc' or by closing the terminal in which it ran.
