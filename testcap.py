@@ -20,22 +20,9 @@ os is used to get current user to get the path to the desktop and to create a ca
 ImageGrab from PIL is used to screenshot the area.
 Lastly, datetime is used to get the current time which is used in catalog creation.
 
-
-Detta verktyg kan ta en skärmavbild på ett fördefinierat område med ett knapptryck. 
-Anvädning:
-
-För att kunna köra detta verktyg, installera följande delar:
-            pynput, pyautogui
-
-
-1. Hitta området som du vill ta skärmavbild av
-            Starta programmet och flytta muspekaren till ett hörn högst upp till vänster i det området där skärmavbilden ska tas
-            tryck sedan på f2 då den printar ut positionen (x och y). Flytta sedan muspekaren till den andra positionen (längst ner till höger)
-            och tryck på f2 igen. Då har du 2 x och y positioner, den första lägger du in som värde i variabeln mouse_pos_1 och det andra värdet
-            i mouse_pos_2. Starta sedan om programmet och nu kan du starta provet och trycka på f1 så kommer programmet printscreena området
-            och lägga bilderna i en katalog som skapats när du starta programmet.
-
-            För att visa hur positionerna funkar:
+When the libraries are installed, run the script, move your mouse in the top-left corner of the area you want to screenshot later, then press 'space'. 
+The (X,Y) positions of your mouse will be printed to the terminal that spawned when the script ran (copy these positions, you'll use them later). 
+Now, repeat the same thing but in the bottom-right corner of the area you want to screenshot later. See the illustration below.  
 
                     (100,150)
                      X - - - - - - - - - - - - -
@@ -47,12 +34,16 @@ För att kunna köra detta verktyg, installera följande delar:
                     |                           |
                      - - - - - - - - - - - - - X (200,350)
 
+When you have the two x and y positions, enter them respectively into the variables 'top_left_mouse_pos' and 'bottom_right_mouse_pos'.
+Exit the script, either by pressing 'esc' or by closing the terminal in which it ran. 
+Run it again, and now you can test your automated image capture by pressing the 'screenshot' key. 
+
 """
 
           
 # ~~~~~~~~~ VARIABLES ~~~~~~~~~ 
-mouse_pos_1 = (566,124)
-mouse_pos_2 = (1322,160)
+top_left_mouse_pos = (566,124)
+bottom_right_mouse_pos = (1322,160)
 
 img_catalog_created = False
 root_storage_dir = r'C:\Users\{}\Desktop\testhelper-'.format(os.getlogin())
@@ -64,7 +55,7 @@ screenshot_counter = 0
 def create_catalog():
     global img_catalog_created
     img_catalog_created = True
-    
+
     try:
         os.mkdir(storage_dir)
         print(f"Created catalog {storage_dir}")
@@ -80,7 +71,7 @@ def screenshot():
         create_catalog()
     
     try:
-        im = ImageGrab.grab(bbox=(*mouse_pos_1, *mouse_pos_2))
+        im = ImageGrab.grab(bbox=(*top_left_mouse_pos, *bottom_right_mouse_pos))
         screenshot_counter += 1
         img_full_path = storage_dir + f"Screenshot {screenshot_counter}.png"
         im.save(img_full_path)
